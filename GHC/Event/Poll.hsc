@@ -120,7 +120,7 @@ poll p mtout f = do
         | otherwise = do
             result <- c_poll ptr len (fromIntegral maxPollTimeout)
             if result == 0
-               then c_pollLoop ptr len (fromIntegral (tout - maxPollTimeout))
+               then c_pollLoop ptr len (tout - maxPollTimeout)
                else return result
 
     -- We need to account for 3 cases:
